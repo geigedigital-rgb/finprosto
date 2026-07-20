@@ -35,6 +35,40 @@ try {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const siteUrl = (process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://finprosto.com').replace(/\/$/, '');
+let canonicalHost = 'finprosto.com';
+try {
+  canonicalHost = new URL(siteUrl).hostname.replace(/^www\./, '');
+} catch {
+  // keep default
+}
+
+// Force HTTPS + redirect www → apex (canonical SITE_URL host)
+app.use((req, res, next) => {
+  const host = (req.headers['x-forwarded-host'] || req.headers.host || '')
+    .toString()
+    .split(':')[0]
+    .toLowerCase();
+  const proto = (req.headers['x-forwarded-proto'] || req.protocol || 'https')
+    .toString()
+    .split(',')[0]
+    .trim();
+
+  // Skip Railway default domains
+  if (host.endsWith('.up.railway.app') || host.endsWith('.railway.app')) {
+    return next();
+  }
+
+  const isWww = host === `www.${canonicalHost}`;
+  const needsHttps = proto !== 'https';
+
+  if (isWww || needsHttps) {
+    const targetHost = isWww ? canonicalHost : host;
+    return res.redirect(301, `https://${targetHost}${req.originalUrl}`);
+  }
+
+  return next();
+});
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true }));
