@@ -1,0 +1,36 @@
+{
+  "name": "FinProsto",
+  "short_name": "FinProsto",
+  "description": "Готові таблиці для обліку фінансів бізнесу в Google Sheets",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2563EB",
+  "theme_color": "#2563EB",
+  "lang": "uk",
+  "icons": [
+    {
+      "src": "/icons/32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/400x400.png",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/Overview.png",
+      "sizes": "270x270",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "400x400",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

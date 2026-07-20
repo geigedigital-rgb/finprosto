@@ -14,7 +14,7 @@ export default function Layout({ children, currentPageName }) {
       "name": "FinProsto",
       "alternateName": "Фінпросто",
       "url": window.location.origin,
-      "logo": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/6bb2a5c14_Group481515.png",
+      "logo": `${window.location.origin}/icons/400x400.png`,
       "description": "Готові таблиці для обліку фінансів бізнесу в Google Sheets",
       "sameAs": [
         "https://www.facebook.com/finprosto",
