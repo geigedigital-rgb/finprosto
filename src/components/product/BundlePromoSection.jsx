@@ -16,7 +16,7 @@ export default function BundlePromoSection({ onBuyBundle }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2026-06-30T23:59:59');
+    const targetDate = new Date('2026-08-30T23:59:59');
     
     const updateTimer = () => {
       const now = new Date();
