@@ -5,7 +5,8 @@ import { createPageUrl } from '../../utils';
 import { ArrowRight } from 'lucide-react';
 import { articlesData as baseArticles } from '../data/articlesData';
 import { articlesData2026 } from '../data/articlesData2026';
-const articlesData = [...articlesData2026, ...baseArticles];
+import { articlesDataJuly2026 } from '../data/articlesDataJuly2026';
+const articlesData = [...articlesDataJuly2026, ...articlesData2026, ...baseArticles];
 
 export default function RelatedArticles({ currentSlug }) {
   const otherArticles = articlesData

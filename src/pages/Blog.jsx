@@ -6,8 +6,9 @@ import Footer from '../components/landing/Footer';
 import ArticleCard from '../components/blog/ArticleCard';
 import { articlesData as baseArticles } from '../components/data/articlesData';
 import { articlesData2026 } from '../components/data/articlesData2026';
+import { articlesDataJuly2026 } from '../components/data/articlesDataJuly2026';
 
-const articlesData = [...articlesData2026, ...baseArticles];
+const articlesData = [...articlesDataJuly2026, ...articlesData2026, ...baseArticles];
 
 export default function BlogPage() {
   useEffect(() => {

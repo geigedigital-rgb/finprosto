@@ -12,8 +12,9 @@ import ArticleFAQ from '../components/blog/ArticleFAQ';
 import ArticleCTA from '../components/blog/ArticleCTA';
 import { articlesData as baseArticles } from '../components/data/articlesData';
 import { articlesData2026 } from '../components/data/articlesData2026';
+import { articlesDataJuly2026 } from '../components/data/articlesDataJuly2026';
 
-const articlesData = [...articlesData2026, ...baseArticles];
+const articlesData = [...articlesDataJuly2026, ...articlesData2026, ...baseArticles];
 
 export default function ArticlePage() {
   const [article, setArticle] = useState(null);
