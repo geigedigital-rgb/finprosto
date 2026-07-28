@@ -62,10 +62,6 @@ export default function BlogPage() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center mb-14"
             >
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold border border-emerald-100 mb-5">
-                <BookOpen className="w-4 h-4" />
-                База знань
-              </span>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
                 Корисні статті про облік
               </h1>

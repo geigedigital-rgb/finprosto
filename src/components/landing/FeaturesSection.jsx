@@ -9,7 +9,6 @@ import {
   CreditCard,
   Zap,
   Shield,
-  Layers
 } from 'lucide-react';
 
 export default function FeaturesSection() {
@@ -75,10 +74,6 @@ export default function FeaturesSection() {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            Можливості
-          </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 sm:mb-4">
             Переваги для Вас
           </h2>

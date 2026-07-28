@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../../utils';
-import { BookOpen, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ArticleCard from '../blog/ArticleCard';
 import { articlesData as baseArticles } from '../data/articlesData';
@@ -25,10 +25,6 @@ export default function KnowledgeBaseSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 text-violet-700 text-sm font-medium mb-4">
-            <BookOpen className="w-4 h-4" />
-            База знань
-          </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             Корисні статті про облік
           </h2>

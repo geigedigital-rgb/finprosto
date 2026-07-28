@@ -11,7 +11,6 @@ import {
   Star,
   TrendingUp,
   Check,
-  LayoutGrid,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PaymentModal from '../payment/PaymentModal';
@@ -100,10 +99,6 @@ export default function ProductsMiniSection() {
           viewport={{ once: true }}
           className="text-center mb-8 sm:mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-emerald-700 text-xs sm:text-sm font-medium mb-3 sm:mb-4 shadow-sm border border-emerald-100">
-            <LayoutGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            Готові рішення
-          </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-4 tracking-tight">
             Таблиці та Фінансові моделі
           </h2>

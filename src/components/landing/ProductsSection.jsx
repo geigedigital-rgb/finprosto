@@ -93,10 +93,6 @@ const ProductsSection = React.memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 text-violet-700 text-sm font-medium mb-4">
-            <FileSpreadsheet className="w-4 h-4" />
-            Готові рішення
-          </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             Готові Таблиці для обліку
           </h2>

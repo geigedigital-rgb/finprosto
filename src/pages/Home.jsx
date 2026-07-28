@@ -211,6 +211,9 @@ export default function Home() {
           <BundleSection onBuyBundle={handleBuyBundle} />
         </div>
         <ForWhoSection />
+        <div ref={reviewsRef}>
+          <ReviewsSection />
+        </div>
         <ProductsMiniSection />
         <FeaturesSection />
         {/* Hidden for now — ask to restore BusinessCategoriesSection */}
@@ -221,9 +224,6 @@ export default function Home() {
         <div style={{display: 'none'}}>
           <ProductCategoriesTabbedSection />
         </div>
-        <div ref={reviewsRef}>
-          <ReviewsSection />
-        </div>
         <KnowledgeBaseSection />
         
         {/* SEO Content Block */}
@@ -233,9 +233,6 @@ export default function Home() {
 
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-emerald-700 text-sm font-medium mb-5 shadow-sm border border-emerald-100">
-                Фінансовий облік
-              </span>
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight mb-4">
                 Чому облік фінансів критично важливий для бізнесу
               </h2>

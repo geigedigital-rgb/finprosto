@@ -8,7 +8,6 @@ import {
   Factory,
   User,
   TrendingUp,
-  PieChart,
   CheckCircle,
   XCircle
 } from 'lucide-react';
@@ -75,10 +74,6 @@ export default function ForWhoSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
-            <PieChart className="w-4 h-4" />
-            Цільова аудиторія
-          </span>
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             Для кого підходить
           </h2>

@@ -2,6 +2,7 @@ const PAGES = [
   { path: '/', changefreq: 'daily', priority: '1.0' },
   { path: '/Products', changefreq: 'weekly', priority: '0.9' },
   { path: '/ProductPro', changefreq: 'monthly', priority: '0.8' },
+  { path: '/AdsPro', changefreq: 'weekly', priority: '0.9' },
   { path: '/ProductWarehouse', changefreq: 'monthly', priority: '0.8' },
   { path: '/ProductEstimate', changefreq: 'monthly', priority: '0.8' },
   { path: '/ProductLite', changefreq: 'monthly', priority: '0.8' },
