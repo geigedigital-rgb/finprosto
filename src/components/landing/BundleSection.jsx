@@ -13,24 +13,34 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
+function formatPromoDate(date = new Date()) {
+  const d = String(date.getDate()).padStart(2, '0');
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const y = String(date.getFullYear()).slice(-2);
+  return `${d}.${m}.${y}`;
+}
+
 export default function BundleSection({ onBuyBundle }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2026-08-30T23:59:59');
-    
     const updateTimer = () => {
       const now = new Date();
-      const diff = targetDate - now;
-      
-      if (diff > 0) {
-        setTimeLeft({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((diff / (1000 * 60)) % 60),
-          seconds: Math.floor((diff / 1000) % 60)
-        });
+      const endOfDay = new Date(now);
+      endOfDay.setHours(23, 59, 59, 999);
+      let diff = endOfDay - now;
+
+      if (diff <= 0) {
+        endOfDay.setDate(endOfDay.getDate() + 1);
+        diff = endOfDay - now;
       }
+
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60)
+      });
     };
     
     updateTimer();
@@ -184,7 +194,7 @@ export default function BundleSection({ onBuyBundle }) {
                       <span className="text-3xl font-bold text-slate-900">1 240</span>
                       <span className="text-lg font-bold text-slate-900">₴</span>
                     </div>
-                    <div className="text-[10px] text-slate-400">Пропозиція діє до 30.08.26</div>
+                    <div className="text-[10px] text-slate-400">Пропозиція діє до {formatPromoDate()}</div>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-100 text-emerald-700 text-sm whitespace-nowrap">
                     <Zap className="w-4 h-4 flex-shrink-0" />

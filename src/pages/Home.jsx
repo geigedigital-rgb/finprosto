@@ -15,7 +15,10 @@ import Footer from '@/components/landing/Footer';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import PaymentModal from '@/components/payment/PaymentModal';
 import MobileStickyBanner from '@/components/landing/MobileStickyBanner';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, Wallet, Lightbulb, Search, Landmark } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '../utils';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const [paymentModalOpen, setPaymentModalOpen] = React.useState(false);
@@ -209,7 +212,10 @@ export default function Home() {
         </div>
         <ForWhoSection />
         <FeaturesSection />
-        <BusinessCategoriesSection />
+        {/* Hidden for now — ask to restore BusinessCategoriesSection */}
+        <div style={{ display: 'none' }}>
+          <BusinessCategoriesSection />
+        </div>
         <CustomSolutionSection />
         <div style={{display: 'none'}}>
           <ProductCategoriesTabbedSection />
@@ -221,131 +227,155 @@ export default function Home() {
         <KnowledgeBaseSection />
         
         {/* SEO Content Block */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0 bg-[#f7faf8]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.10),_transparent_55%)]" />
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-emerald-700 text-sm font-medium mb-5 shadow-sm border border-emerald-100">
+                Фінансовий облік
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight mb-4">
                 Чому облік фінансів критично важливий для бізнесу
               </h2>
-              
-              <div className="bg-slate-50 rounded-2xl p-8 mb-8 border border-slate-200">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Що дає професійний облік фінансів підприємству</h3>
-                
-                <div className="space-y-4 text-slate-700 leading-relaxed">
-                  <p>
-                    <strong>Контроль грошових потоків.</strong> Облік фінансів бізнесу показує реальний стан справ: скільки грошей на рахунках, 
-                    скільки заморожено в товарах та дебіторці, коли очікуються надходження. Без цього розуміння неможливо планувати розвиток 
-                    та уникати касових розривів, які призводять до банкрутства навіть прибуткових компаній.
-                  </p>
-                  
-                  <p>
-                    <strong>Прийняття обґрунтованих рішень.</strong> Фінансовий облік підприємства дає цифри для стратегічних рішень: 
-                    чи можна відкрити новий напрям, чи варто наймати співробітників, які ціни встановлювати на продукцію. 
-                    Рішення на основі даних мають у 5 разів вищий успіх порівняно з інтуїтивними.
-                  </p>
-                  
-                  <p>
-                    <strong>Виявлення втрат та крадіжок.</strong> Система обліку витрат показує аномалії: чому витрати на матеріали зросли на 30%? 
-                    Чому виручка падає при тій самій кількості клієнтів? Управлінський облік допомагає виявляти проблеми на ранній стадії 
-                    та економити до 20-30% витрат щороку.
-                  </p>
-                  
-                  <p>
-                    <strong>Залучення інвестицій.</strong> Інвестори та банки вимагають прозору фінансову звітність. 
-                    Без професійного обліку фінансів ви не отримаєте кредит на розвиток та не зможете залучити партнерів. 
-                    P&L звіти, CashFlow прогнози, рентабельність по напрямах - це мінімальний набір для діалогу з інвесторами.
-                  </p>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Професійний управлінський облік дає контроль, цифри для рішень і прозорість для розвитку
+              </p>
+            </div>
+
+            <div className="mb-12">
+              <h3 className="text-xl font-bold text-slate-900 mb-6 text-center sm:text-left">
+                Що дає професійний облік фінансів підприємству
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4 lg:gap-5">
+                {[
+                  {
+                    icon: Wallet,
+                    title: 'Контроль грошових потоків',
+                    text: 'Облік фінансів бізнесу показує реальний стан справ: скільки грошей на рахунках, скільки заморожено в товарах та дебіторці, коли очікуються надходження. Без цього неможливо планувати розвиток та уникати касових розривів.',
+                  },
+                  {
+                    icon: Lightbulb,
+                    title: 'Прийняття обґрунтованих рішень',
+                    text: 'Фінансовий облік підприємства дає цифри для стратегічних рішень: чи можна відкрити новий напрям, чи варто наймати співробітників, які ціни встановлювати. Рішення на основі даних мають у 5 разів вищий успіх.',
+                  },
+                  {
+                    icon: Search,
+                    title: 'Виявлення втрат та крадіжок',
+                    text: 'Система обліку витрат показує аномалії: чому витрати на матеріали зросли на 30%? Чому виручка падає при тій самій кількості клієнтів? Управлінський облік допомагає економити до 20-30% витрат щороку.',
+                  },
+                  {
+                    icon: Landmark,
+                    title: 'Залучення інвестицій',
+                    text: 'Інвестори та банки вимагають прозору фінансову звітність. P&L звіти, CashFlow прогнози, рентабельність по напрямах — мінімальний набір для діалогу з інвесторами та партнерами.',
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-[28px] bg-white border border-slate-100 p-6 lg:p-7 shadow-[0_8px_30px_rgba(15,23,42,0.05)] hover:shadow-[0_14px_36px_rgba(15,23,42,0.08)] transition-shadow"
+                  >
+                    <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4 border border-emerald-100">
+                      <item.icon className="w-5 h-5" strokeWidth={1.75} />
+                    </div>
+                    <h4 className="font-bold text-slate-900 mb-2">{item.title}</h4>
+                    <p className="text-sm text-slate-600 leading-relaxed">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[32px] bg-white border border-slate-100 p-6 sm:p-8 lg:p-10 mb-12 shadow-[0_8px_30px_rgba(15,23,42,0.05)]">
+              <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
+                Різниця між бухгалтерським та управлінським обліком
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-4 lg:gap-5">
+                <div className="rounded-[24px] bg-slate-50 border border-slate-100 p-6">
+                  <h4 className="font-bold text-slate-900 mb-4">Бухгалтерський облік</h4>
+                  <ul className="space-y-3 text-sm text-slate-600">
+                    {[
+                      'Для податкової та звітності',
+                      'Ведеться по законодавчим нормам',
+                      'Історичні дані (що вже сталося)',
+                      'Рахується бухгалтером',
+                      'Складний для розуміння власника',
+                      "Обов'язковий для всіх підприємств",
+                    ].map((line) => (
+                      <li key={line} className="flex items-start gap-2.5">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-300 flex-shrink-0" />
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-[24px] bg-emerald-50/80 border border-emerald-100 p-6">
+                  <h4 className="font-bold text-slate-900 mb-4">Управлінський облік (FinProsto)</h4>
+                  <ul className="space-y-3 text-sm text-slate-700">
+                    {[
+                      'Для власника та прийняття рішень',
+                      'Ведеться як зручно бізнесу',
+                      'Реальний час + прогнози майбутнього',
+                      'Веде власник або менеджер',
+                      'Зрозумілий та наочний',
+                      "Необов'язковий, але дуже корисний",
+                    ].map((line) => (
+                      <li key={line} className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 mb-8 border border-emerald-200">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Різниця між бухгалтерським та управлінським обліком</h3>
-                
-                <div className="grid md:grid-cols-2 gap-6 text-sm">
-                  <div className="bg-white rounded-xl p-6 border border-slate-200">
-                    <h4 className="font-bold text-slate-900 mb-3 text-base">Бухгалтерський облік</h4>
-                    <ul className="space-y-2 text-slate-700">
-                      <li>• Для податкової та звітності</li>
-                      <li>• Ведеться по законодавчим нормам</li>
-                      <li>• Історичні дані (що вже сталося)</li>
-                      <li>• Рахується бухгалтером</li>
-                      <li>• Складний для розуміння власника</li>
-                      <li>• Обов'язковий для всіх підприємств</li>
-                    </ul>
+              <p className="text-sm text-slate-600 mt-6 text-center leading-relaxed max-w-3xl mx-auto">
+                FinProsto — це управлінський облік фінансів. Він не замінює бухгалтера, а доповнює його, даючи інструмент для контролю та управління бізнесом.
+              </p>
+            </div>
+
+            <div className="rounded-[32px] bg-white border border-slate-100 p-6 sm:p-8 lg:p-10 shadow-[0_8px_30px_rgba(15,23,42,0.05)]">
+              <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
+                Для кого підходить облік фінансів в Google Sheets
+              </h3>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {[
+                  { title: 'Малий бізнес', text: 'ФОП, СПД з оборотом до 5 млн грн/рік' },
+                  { title: 'Середній бізнес', text: 'компанії з оборотом 5-50 млн грн/рік' },
+                  { title: 'Стартапи', text: 'молоді компанії, яким потрібен контроль Burn Rate' },
+                  { title: 'Фрілансери', text: 'самозайняті з декількома джерелами доходу' },
+                  { title: 'E-commerce', text: 'інтернет-магазини з контролем реклами та ROI' },
+                  { title: 'Виробництво', text: 'підприємства з розрахунком собівартості' },
+                  { title: 'Послуги', text: 'сфера послуг з обліком проєктів та клієнтів' },
+                  { title: 'Агробізнес', text: 'фермери з сезонним обліком врожаю' },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-3 rounded-2xl bg-slate-50/80 border border-slate-100 px-4 py-3.5"
+                  >
+                    <span className="mt-0.5 inline-flex w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 items-center justify-center flex-shrink-0">
+                      <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+                    </span>
+                    <div className="text-sm text-slate-700 leading-relaxed">
+                      <strong className="text-slate-900">{item.title}</strong>
+                      {' — '}
+                      {item.text}
+                    </div>
                   </div>
-                  
-                  <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl p-6 border-2 border-emerald-300">
-                    <h4 className="font-bold text-slate-900 mb-3 text-base">Управлінський облік (FinProsto)</h4>
-                    <ul className="space-y-2 text-slate-700">
-                      <li>• Для власника та прийняття рішень</li>
-                      <li>• Ведеться як зручно бізнесу</li>
-                      <li>• Реальний час + прогнози майбутнього</li>
-                      <li>• Веде власник або менеджер</li>
-                      <li>• Зрозумілий та наочний</li>
-                      <li>• Необов'язковий, але дуже корисний</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <p className="text-sm text-slate-700 mt-6 text-center italic">
-                  FinProsto - це управлінський облік фінансів. Він не замінює бухгалтера, а доповнює його, 
-                  даючи вам інструмент для контролю та управління бізнесом.
-                </p>
+                ))}
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Для кого підходить облік фінансів в Google Sheets</h3>
-                
-                <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Малий бізнес</strong> - ФОП, СПД з оборотом до 5 млн грн/рік
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Середній бізнес</strong> - компанії з оборотом 5-50 млн грн/рік
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Стартапи</strong> - молоді компанії, яким потрібен контроль Burn Rate
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Фрілансери</strong> - самозайняті особи з декількома джерелами доходу
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>E-commerce</strong> - інтернет-магазини з контролем реклами та ROI
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Виробництво</strong> - підприємства з розрахунком собівартості
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Послуги</strong> - сфера послуг з обліком проєктів та клієнтів
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <strong>Агробізнес</strong> - фермери з сезонним обліком врожаю
-                    </div>
-                  </div>
-                </div>
+              <div className="text-center">
+                <Link to={createPageUrl('Products')}>
+                  <Button className="h-12 px-8 rounded-full bg-emerald-800 hover:bg-emerald-900 text-white font-semibold shadow-sm">
+                    Обрати таблицю для обліку
+                    <span className="ml-2 inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

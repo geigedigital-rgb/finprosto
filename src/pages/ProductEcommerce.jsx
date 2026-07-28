@@ -882,7 +882,7 @@ export default function ProductEcommerce() {
 
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">
-                  Що ви отримуєте
+                  Готова таблиця яка підходить для інтернет-магазину
                 </span>
               </h2>
 

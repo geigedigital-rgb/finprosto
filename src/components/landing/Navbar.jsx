@@ -25,7 +25,6 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Продукти', href: createPageUrl('Products') },
-    { label: 'Індивідуальне рішення', href: createPageUrl('CustomSolution') },
     { label: 'Розробка CRM', href: createPageUrl('CRM') },
     { label: 'Як це працює', href: createPageUrl('Home') + '#features' },
     { label: 'Для кого підходить', href: createPageUrl('Home') + '#for-who' },

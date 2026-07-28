@@ -6,7 +6,6 @@ import {
   ArrowLeft, 
   Check, 
   Star,
-  FileSpreadsheet,
   TrendingUp,
   DollarSign,
   Calendar,
@@ -425,27 +424,22 @@ export default function ProductProPage() {
               animate={{ opacity: 1, x: 0 }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-                <div className="bg-emerald-600 h-3" />
-                <div className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
-                      <FileSpreadsheet className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-slate-900">PRO версія</div>
-                      <div className="text-sm text-slate-500">Повний функціонал</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    {['P&L, CashFlow автозвіти', 'Контроль оплати', 'План/Факт аналіз', 'Річний звіт', 'Управління проєктами', 'База контрагентів'].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Check className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                        <span className="text-slate-700">{item}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(15,23,42,0.10)] overflow-hidden">
+                {/* Minimal window chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50/80">
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="ml-3 text-[11px] text-slate-400 font-medium truncate">
+                    Таблиця обліку фінансів PRO
+                  </span>
                 </div>
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/d3430fcf1_.png"
+                  alt="Скріншот таблиці обліку фінансів PRO — реальний звіт"
+                  className="w-full h-auto object-contain bg-white"
+                  fetchPriority="high"
+                />
               </div>
             </motion.div>
           </div>

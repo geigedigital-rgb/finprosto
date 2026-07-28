@@ -899,7 +899,7 @@ export default function ProductIT() {
 
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-300">
-                  Що ви отримуєте
+                  Готова таблиця яка підходить для IT-бізнесу
                 </span>
               </h2>
 

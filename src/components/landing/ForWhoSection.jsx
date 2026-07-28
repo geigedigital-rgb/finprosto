@@ -164,7 +164,7 @@ export default function ForWhoSection() {
             </div>
             <div className="hidden lg:block w-px h-20 bg-white/20" />
             <div>
-              <div className="text-5xl lg:text-6xl font-bold">4 роки</div>
+              <div className="text-5xl lg:text-6xl font-bold">6 років</div>
               <div className="text-emerald-100 mt-2">підтримуємо бізнес</div>
             </div>
           </div>

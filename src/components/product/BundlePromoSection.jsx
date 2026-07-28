@@ -16,20 +16,23 @@ export default function BundlePromoSection({ onBuyBundle }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2026-08-30T23:59:59');
-    
     const updateTimer = () => {
       const now = new Date();
-      const diff = targetDate - now;
-      
-      if (diff > 0) {
-        setTimeLeft({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((diff / (1000 * 60)) % 60),
-          seconds: Math.floor((diff / 1000) % 60)
-        });
+      const endOfDay = new Date(now);
+      endOfDay.setHours(23, 59, 59, 999);
+      let diff = endOfDay - now;
+
+      if (diff <= 0) {
+        endOfDay.setDate(endOfDay.getDate() + 1);
+        diff = endOfDay - now;
       }
+
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60)
+      });
     };
     
     updateTimer();

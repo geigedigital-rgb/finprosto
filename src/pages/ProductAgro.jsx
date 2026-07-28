@@ -900,7 +900,7 @@ export default function ProductAgro() {
 
               <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-                  Що ви отримуєте
+                  Готова таблиця яка підходить для агробізнесу
                 </span>
               </h2>
 

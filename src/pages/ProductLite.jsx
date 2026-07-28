@@ -60,6 +60,18 @@ export default function ProductLite() {
       document.head.appendChild(robots);
     }
     robots.setAttribute('content', 'index, follow');
+
+    const setMetaProperty = (property, content) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    };
+    setMetaProperty('og:image', `${window.location.origin}/product-lite-preview.png`);
+    setMetaProperty('og:title', 'Таблиця для бізнесу (Lite) | FinProsto');
   }, []);
   
   const productInfo = {
@@ -121,18 +133,20 @@ export default function ProductLite() {
 
   const screenshots = [
     {
-      title: 'Лист "Операції"',
-      description: 'Ведення всіх доходів та витрат',
+      title: 'Огляд таблиці Lite',
+      description: 'Баланс, транзакції, статті бюджету та аналітика в одній таблиці',
+      image: '/product-lite-preview.png',
       features: [
-        'Реєстр доходів та витрат бізнесу',
-        'Дата кожної операції',
-        'Категорія операції',
-        'Коментарі та примітки'
+        'Баланс готівки та безготівки',
+        'Реєстр доходів і витрат',
+        'Статті бюджету з динамікою',
+        'Діаграми надходжень і витрат'
       ]
     },
     {
       title: 'Лист "Статті"',
       description: 'Категорії доходів і витрат',
+      image: '/product-lite-articles.png',
       features: [
         'Статті доходів бізнесу',
         'Статті витрат бізнесу',
@@ -141,18 +155,9 @@ export default function ProductLite() {
       ]
     },
     {
-      title: 'Лист "Бюджет"',
-      description: 'Планування та контроль',
-      features: [
-        'План доходів на період',
-        'План витрат на період',
-        'Факт виконання плану',
-        'Відхилення від плану'
-      ]
-    },
-    {
       title: 'Лист "CashFlow"',
       description: 'Рух грошових коштів',
+      image: '/product-lite-cashflow.png',
       features: [
         'Залишки на початок періоду',
         'Надходження коштів',
@@ -232,26 +237,12 @@ export default function ProductLite() {
               className="relative"
             >
               <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-                <div className="bg-orange-600 h-3" />
-                <div className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
-                      <FileSpreadsheet className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-slate-900">Lite версія</div>
-                      <div className="text-sm text-slate-500">Базовий облік</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    {['Прибутки/Витрати', 'Статті витрат', 'Планування бюджету', 'CashFlow звіт', 'Базові звіти', 'Місячний облік'].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Check className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                        <span className="text-slate-700">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <img
+                  src="/product-lite-preview.png"
+                  alt="Таблиця для бізнесу Lite — баланс, транзакції та аналітика"
+                  className="w-full h-auto object-contain"
+                  fetchPriority="high"
+                />
               </div>
             </motion.div>
           </div>
@@ -336,8 +327,20 @@ export default function ProductLite() {
                       ))}
                     </div>
                   </div>
-                  <div className="bg-slate-100 rounded-xl h-64 flex items-center justify-center border border-slate-200">
-                    <FileSpreadsheet className="w-20 h-20 text-slate-300" aria-label={`${sheet.title} - інтерфейс таблиці для обліку фінансів`} />
+                  <div className="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+                    {sheet.image ? (
+                      <img
+                        src={sheet.image}
+                        alt={`${sheet.title} - ${sheet.description} | Таблиця для бізнесу Lite`}
+                        title={sheet.title}
+                        loading="lazy"
+                        className="w-full h-auto object-contain"
+                      />
+                    ) : (
+                      <div className="h-64 flex items-center justify-center bg-slate-50">
+                        <FileSpreadsheet className="w-20 h-20 text-slate-300" aria-label={`${sheet.title} - інтерфейс таблиці для обліку фінансів`} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>

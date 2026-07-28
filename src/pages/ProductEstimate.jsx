@@ -365,27 +365,21 @@ export default function ProductEstimate() {
               animate={{ opacity: 1, x: 0 }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-                <div className="bg-violet-600 h-3" />
-                <div className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center">
-                      <Calculator className="w-7 h-7 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-slate-900">Калькулятор кошторису</div>
-                      <div className="text-sm text-slate-500">Автоматизація розрахунків</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    {['Автоматичні розрахунки', 'Експорт в PDF', 'Шаблони робіт', 'База клієнтів', 'Історія кошторисів', 'Інструкція'].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3">
-                        <Check className="w-5 h-5 text-violet-500 flex-shrink-0" />
-                        <span className="text-slate-700">{item}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="rounded-2xl bg-white border border-slate-200/80 shadow-[0_20px_50px_rgba(15,23,42,0.10)] overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50/80">
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="ml-3 text-[11px] text-slate-400 font-medium truncate">
+                    Калькулятор кошторисів
+                  </span>
                 </div>
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/be41b0dfa_.png"
+                  alt="Скріншот калькулятора кошторисів — лист кошторису"
+                  className="w-full h-auto object-contain bg-white"
+                  fetchPriority="high"
+                />
               </div>
             </motion.div>
           </div>
