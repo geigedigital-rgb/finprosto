@@ -5,7 +5,11 @@ import { createPageUrl } from '../../utils';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ArticleCard from '../blog/ArticleCard';
-import { articlesData } from '../data/articlesData';
+import { articlesData as baseArticles } from '../data/articlesData';
+import { articlesData2026 } from '../data/articlesData2026';
+import { articlesDataJuly2026 } from '../data/articlesDataJuly2026';
+
+const articlesData = [...articlesDataJuly2026, ...articlesData2026, ...baseArticles];
 
 export default function KnowledgeBaseSection() {
   const featuredArticles = [...articlesData]
