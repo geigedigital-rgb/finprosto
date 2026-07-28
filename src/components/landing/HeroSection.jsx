@@ -21,15 +21,15 @@ export default function HeroSection() {
       <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-20 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-12 sm:pb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-tight mb-6">
+            <h1 className="text-[1.85rem] leading-[1.15] sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-slate-900 sm:leading-tight mb-4 sm:mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">
                 Готові таблиці
               </span>
@@ -37,15 +37,15 @@ export default function HeroSection() {
               для обліку бізнесу
             </h1>
 
-            <p className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
+            <p className="text-[15px] sm:text-lg lg:text-xl text-slate-600 mb-7 sm:mb-10 max-w-xl leading-relaxed">
               Економія часу та грошей з повноцінною обліковою системою для вашого бізнесу. Керуйте бізнесом на основі цифр.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-12">
               <Link to={createPageUrl('Products')}>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-700 hover:to-teal-600 text-white px-8 py-6 text-lg rounded-xl transition-all"
+                  className="bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-700 hover:to-teal-600 text-white px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl transition-all"
                 >
                   Обрати шаблон
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -60,28 +60,28 @@ export default function HeroSection() {
                     forSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className="px-8 py-6 text-lg rounded-xl border-2 border-slate-300 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
+                className="px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg rounded-xl border-2 border-slate-300 hover:border-emerald-500 hover:text-emerald-600 transition-colors"
               >
                 Як це працює
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-4 sm:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-2.5"
+                  className="flex items-center gap-2 sm:gap-2.5"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
-                    <stat.icon className="w-4 h-4 text-emerald-600" />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+                    <stat.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-slate-900 leading-tight">{stat.value}</div>
-                    <div className="text-xs text-slate-500">{stat.label}</div>
+                    <div className="text-base sm:text-lg font-bold text-slate-900 leading-tight">{stat.value}</div>
+                    <div className="text-[11px] sm:text-xs text-slate-500">{stat.label}</div>
                   </div>
                 </motion.div>
               ))}

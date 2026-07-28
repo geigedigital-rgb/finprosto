@@ -204,13 +204,14 @@ export default function Home() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white overflow-x-clip">
         <Navbar />
         <HeroSection />
         <div ref={bundleRef}>
           <BundleSection onBuyBundle={handleBuyBundle} />
         </div>
         <ForWhoSection />
+        <ProductsMiniSection />
         <FeaturesSection />
         {/* Hidden for now — ask to restore BusinessCategoriesSection */}
         <div style={{ display: 'none' }}>
@@ -223,7 +224,6 @@ export default function Home() {
         <div ref={reviewsRef}>
           <ReviewsSection />
         </div>
-        <ProductsMiniSection />
         <KnowledgeBaseSection />
         
         {/* SEO Content Block */}

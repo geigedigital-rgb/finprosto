@@ -152,7 +152,27 @@ button:focus-visible {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    overflow-x: clip;
+    max-width: 100%;
+  }
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
+    max-width: 100%;
+    position: relative;
+  }
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
+    min-height: 100%;
+  }
+  img,
+  video,
+  iframe,
+  canvas,
+  svg {
+    max-width: 100%;
+    height: auto;
   }
 }

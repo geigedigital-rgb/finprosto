@@ -67,7 +67,7 @@ export default function BundleSection({ onBuyBundle }) {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900 relative overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900 relative overflow-x-clip overflow-y-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:60px_60px]" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
@@ -92,7 +92,7 @@ export default function BundleSection({ onBuyBundle }) {
               </Badge>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
                 Фінансова система для контролю бізнесу
               </span>

@@ -89,7 +89,7 @@ export default function ProductsMiniSection() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 relative overflow-x-clip overflow-y-hidden">
       <div className="absolute inset-0 bg-[#f7faf8]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.08),_transparent_55%)]" />
 
@@ -98,21 +98,21 @@ export default function ProductsMiniSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-emerald-700 text-sm font-medium mb-4 shadow-sm border border-emerald-100">
-            <LayoutGrid className="w-4 h-4" />
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-emerald-700 text-xs sm:text-sm font-medium mb-3 sm:mb-4 shadow-sm border border-emerald-100">
+            <LayoutGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Готові рішення
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-4 tracking-tight">
             Таблиці та Фінансові моделі
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[15px] sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Оберіть професійний інструмент який відповідає вашим потребам
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-10">
           {products.map((product, index) => {
             const Icon = product.icon;
 
@@ -124,9 +124,9 @@ export default function ProductsMiniSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 onClick={() => navigate(createPageUrl(product.pageName))}
-                className="group relative rounded-[28px] bg-white border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.06)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col"
+                className="group relative rounded-2xl sm:rounded-[28px] bg-white border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.06)] hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col"
               >
-                <div className="relative mx-4 mt-4 mb-1 overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 aspect-[16/10]">
+                <div className="relative mx-3 sm:mx-4 mt-3 sm:mt-4 mb-1 overflow-hidden rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-100 aspect-[16/10]">
                   {product.image ? (
                     <img
                       src={product.image}
@@ -144,7 +144,7 @@ export default function ProductsMiniSection() {
                   </div>
                 </div>
 
-                <div className="p-5 pt-4 flex flex-col flex-1">
+                <div className="p-4 sm:p-5 pt-3 sm:pt-4 flex flex-col flex-1">
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide bg-emerald-50 text-emerald-700 border border-emerald-100">
                       {product.badge}
@@ -178,7 +178,7 @@ export default function ProductsMiniSection() {
 
                   <div className="mt-auto pt-1">
                     <div className="flex items-end gap-2 mb-4">
-                      <span className="text-2xl font-bold text-slate-900 tracking-tight">{product.price} ₴</span>
+                      <span className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">{product.price} ₴</span>
                       <span className="text-sm text-slate-400 line-through mb-1">{product.oldPrice} ₴</span>
                       <span className="mb-1 inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-100">
                         {product.discount}

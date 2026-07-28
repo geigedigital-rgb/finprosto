@@ -64,7 +64,7 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-14 sm:py-20 lg:py-24 bg-white relative overflow-x-clip overflow-y-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-emerald-50/50 to-transparent" />
       
@@ -73,22 +73,22 @@ export default function FeaturesSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
-            <Layers className="w-4 h-4" />
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Можливості
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-3 sm:mb-4">
             Переваги для Вас
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-[15px] sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Як вести фінанси в бізнесі? Встановіть шаблон гугл-таблиці та плануйте витрати, контролюйте доходи легко та швидко
           </p>
         </motion.div>
 
         {/* Main Features */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-16">
           {mainFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -96,7 +96,7 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-white rounded-3xl p-8 border border-slate-100 shadow-sm"
+              className="relative bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-100 shadow-sm"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`} />
               

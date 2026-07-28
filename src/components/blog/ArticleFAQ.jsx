@@ -6,29 +6,34 @@ export default function ArticleFAQ({ faqs }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="mt-16 bg-slate-50 rounded-2xl p-8">
-      <h3 className="text-2xl font-bold text-slate-900 mb-6">
-        Часті питання
-      </h3>
+    <section className="mt-10 sm:mt-16 rounded-2xl sm:rounded-[32px] bg-white border border-slate-100 shadow-[0_8px_30px_rgba(15,23,42,0.05)] p-4 sm:p-8 lg:p-10">
+      <div className="text-center mb-6 sm:mb-8">
+        <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100 mb-3">
+          FAQ
+        </span>
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+          Часті питання
+        </h3>
+      </div>
       
-      <div className="space-y-4">
+      <div className="space-y-3">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl border border-slate-200 overflow-hidden"
+            className="rounded-2xl border border-slate-100 bg-slate-50/50 overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
+              className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-white/70 transition-colors"
             >
-              <span className="font-semibold text-slate-900 pr-4">
+              <span className="font-semibold text-slate-900 pr-4 text-[15px] leading-snug">
                 {faq.question}
               </span>
-              <ChevronDown
-                className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${
-                  openIndex === index ? 'rotate-180' : ''
-                }`}
-              />
+              <span className={`w-8 h-8 rounded-full bg-white border border-slate-100 flex items-center justify-center flex-shrink-0 transition-transform ${
+                openIndex === index ? 'rotate-180' : ''
+              }`}>
+                <ChevronDown className="w-4 h-4 text-slate-500" />
+              </span>
             </button>
             
             <AnimatePresence>
@@ -39,7 +44,7 @@ export default function ArticleFAQ({ faqs }) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="px-6 pb-4 pt-0 text-slate-600">
+                  <div className="px-5 pb-5 pt-0 text-slate-600 text-sm leading-relaxed">
                     {faq.answer}
                   </div>
                 </motion.div>

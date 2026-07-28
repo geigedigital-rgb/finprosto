@@ -67,7 +67,7 @@ export default function ForWhoSection() {
   };
 
   return (
-    <section id="for-who" className="py-24 bg-gradient-to-b from-white to-slate-50">
+    <section id="for-who" className="py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-slate-50 overflow-x-clip">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
