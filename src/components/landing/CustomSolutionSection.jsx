@@ -18,7 +18,7 @@ import ContactFormModal from './ContactFormModal';
 export default function CustomSolutionSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-x-clip overflow-y-hidden">
+    <section className="hidden sm:block py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-x-clip overflow-y-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-full blur-3xl" />
