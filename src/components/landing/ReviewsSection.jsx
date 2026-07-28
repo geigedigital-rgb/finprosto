@@ -29,7 +29,7 @@ export default function ReviewsSection() {
       name: 'Дмитро Сидоренко',
       position: 'Директор',
       company: 'Будівельна компанія',
-      text: 'Калькулятор кошторисів економить нам години роботи щотижня. Клієнти отримують смети швидше і виглядають професійніше',
+      text: 'Найкраще — по кожному проєкту видно цифри: прибуток, витрати, рентабельність. Більше не гадаю, який об\'єкт тягне, а який годує',
       rating: 5,
       photo: '/reviews/dmytro-sydorenko.jpg',
       avatar: '/reviews/dmytro-sydorenko-avatar.jpg',
