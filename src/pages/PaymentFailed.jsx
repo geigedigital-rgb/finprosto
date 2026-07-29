@@ -223,23 +223,32 @@ export default function PaymentFailed() {
 
     setLoading(true);
     try {
+      const metadata = {
+        ip: await fetch('https://api.ipify.org?format=json')
+          .then((r) => r.json())
+          .then((d) => d.ip)
+          .catch(() => 'невідомо'),
+        referrer: document.referrer || 'пряме відвідування',
+        screen: `${window.innerWidth}x${window.innerHeight}`,
+        language: navigator.language || navigator.userLanguage,
+        page: window.location.href,
+        formType: 'Payment Failed Callback',
+        product: paymentProduct.title || 'невідомо',
+        orderReference: orderReference || 'невідомо',
+      };
+
       await invokeFunction('sendToTelegram', {
         email: sanitizedEmail,
         message: [
-          '⚠️ Невдала оплата — запит на дзвінок менеджера',
+          `Email клієнта: ${sanitizedEmail}`,
+          'Запит: звʼязатися після невдалої оплати, зберегти знижку',
           paymentProduct.title ? `Продукт: ${paymentProduct.title}` : null,
+          paymentProduct.price ? `Ціна: ${paymentProduct.price} ₴` : null,
           orderReference ? `Замовлення: ${orderReference}` : null,
-          'Клієнт просить зберегти знижку і звʼязатися.',
         ]
           .filter(Boolean)
           .join('\n'),
-        metadata: {
-          page: window.location.href,
-          formType: 'Payment Failed Callback',
-          product: paymentProduct.title || 'невідомо',
-          orderReference: orderReference || 'невідомо',
-          referrer: document.referrer || 'пряме відвідування',
-        },
+        metadata,
       });
 
       localStorage.setItem('paymentEmail', sanitizedEmail);

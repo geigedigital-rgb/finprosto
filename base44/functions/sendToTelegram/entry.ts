@@ -21,7 +21,12 @@ Deno.serve(async (req) => {
     }
     
     // Формуємо повідомлення з додатковими даними
-    let telegramMessage = `🎫 Новий тікет з контактної форми\n\n📧 Email: ${email}\n\n💬 Повідомлення:\n${message}\n\n⏰ Час: ${new Date().toLocaleString('uk-UA')}`;
+    const ticketTitle =
+      metadata?.formType === 'Payment Failed Callback'
+        ? '🎫 Новий тікет: невдала оплата'
+        : '🎫 Новий тікет з контактної форми';
+
+    let telegramMessage = `${ticketTitle}\n\n📧 Email: ${email}\n\n💬 Повідомлення:\n${message}\n\n⏰ Час: ${new Date().toLocaleString('uk-UA')}`;
     
     // Додаємо метадані якщо є
     if (metadata) {
@@ -31,6 +36,9 @@ Deno.serve(async (req) => {
       if (metadata.screen) telegramMessage += `\n📱 Екран: ${metadata.screen}`;
       if (metadata.language) telegramMessage += `\n🌍 Мова: ${metadata.language}`;
       if (metadata.page) telegramMessage += `\n📄 Сторінка: ${metadata.page}`;
+      if (metadata.formType) telegramMessage += `\n📋 Форма: ${metadata.formType}`;
+      if (metadata.product) telegramMessage += `\n🛒 Продукт: ${metadata.product}`;
+      if (metadata.orderReference) telegramMessage += `\n🧾 Замовлення: ${metadata.orderReference}`;
       if (metadata.utm) {
         const utmParams = Object.entries(metadata.utm)
           .map(([key, value]) => `${key}: ${value}`)
