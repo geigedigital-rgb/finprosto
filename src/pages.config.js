@@ -78,6 +78,7 @@ import ProductPro from './pages/ProductPro';
 import ProductWarehouse from './pages/ProductWarehouse';
 import Products from './pages/Products';
 import done from './pages/done';
+import PaymentFailed from './pages/PaymentFailed';
 import CRM from './pages/CRM';
 import CRMTrade from './pages/CRMTrade';
 import CRMBeauty from './pages/CRMBeauty';
@@ -127,6 +128,7 @@ export const PAGES = {
     "ProductWarehouse": ProductWarehouse,
     "Products": Products,
     "done": done,
+    "PaymentFailed": PaymentFailed,
     "CRM": CRM,
     "CRMTrade": CRMTrade,
     "CRMBeauty": CRMBeauty,

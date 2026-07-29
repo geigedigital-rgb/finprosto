@@ -30,7 +30,7 @@ const products = [
     rating: '4.9',
     users: '1900+',
     pageName: 'ProductPro',
-    productData: { title: 'Таблиця обліку фінансів PRO', price: '1 730', oldPrice: '2 090', discount: '-30%' }
+    productData: { id: 'pro', title: 'Таблиця обліку фінансів PRO', price: '1 730', oldPrice: '2 090', discount: '-30%', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/d3430fcf1_.png' }
   },
   {
     id: 'warehouse',
@@ -46,7 +46,7 @@ const products = [
     rating: '4.8',
     users: '800+',
     pageName: 'ProductWarehouse',
-    productData: { title: 'Таблиця обліку Складу', price: '1 100', oldPrice: '1 490', discount: '-26%' }
+    productData: { id: 'warehouse', title: 'Таблиця обліку Складу', price: '1 100', oldPrice: '1 490', discount: '-26%', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/5b20a0ada_.png' }
   },
   {
     id: 'estimate',
@@ -62,7 +62,7 @@ const products = [
     rating: '4.7',
     users: '600+',
     pageName: 'ProductEstimate',
-    productData: { title: 'Калькулятор кошторисів', price: '410', oldPrice: '590', discount: '-30%' }
+    productData: { id: 'estimate', title: 'Калькулятор кошторисів', price: '410', oldPrice: '590', discount: '-30%', image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/be41b0dfa_.png' }
   },
   {
     id: 'lite',
@@ -78,7 +78,7 @@ const products = [
     rating: '4.6',
     users: '1200+',
     pageName: 'ProductLite',
-    productData: { title: 'Таблиця для бізнесу Lite', price: '429', oldPrice: '590', discount: '-27%' }
+    productData: { id: 'lite', title: 'Таблиця для бізнесу Lite', price: '429', oldPrice: '590', discount: '-27%', image: '/product-lite-preview.png' }
   }
 ];
 

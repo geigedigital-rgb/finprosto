@@ -33,10 +33,13 @@ const HERO_IMAGE =
   'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/d3430fcf1_.png';
 
 const productInfo = {
+  id: 'pro',
   title: 'Таблиця обліку фінансів PRO',
   price: '1730',
   oldPrice: '2090',
   discount: '-30%',
+  image:
+    'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6936a897e833408027878162/d3430fcf1_.png',
   demoUrl:
     'https://docs.google.com/spreadsheets/d/11Wd50AtAzX9DyxbFIdnWPlvp8NzewUUY0ni0mcfAJj8/edit?usp=drive_link',
 };

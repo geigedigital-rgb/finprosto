@@ -13,8 +13,20 @@ export default function DonePage() {
   useEffect(() => {
     // Отримуємо параметри з URL (WayForPay передає їх після оплати)
     const urlParams = new URLSearchParams(window.location.search);
+    const status = (urlParams.get('transactionStatus') || urlParams.get('status') || '').toLowerCase();
+    // Якщо хтось потрапив на /done після відхилення — на конверсійну сторінку
+    if (status && status !== 'approved') {
+      const failParams = new URLSearchParams();
+      const emailParam = urlParams.get('clientEmail') || urlParams.get('email') || localStorage.getItem('paymentEmail');
+      const orderReferenceParam = urlParams.get('orderReference');
+      if (emailParam) failParams.set('email', emailParam);
+      if (orderReferenceParam) failParams.set('orderReference', orderReferenceParam);
+      window.location.replace(`/PaymentFailed${failParams.toString() ? `?${failParams}` : ''}`);
+      return;
+    }
+
     const orderReference = urlParams.get('orderReference');
-    const email = urlParams.get('clientEmail') || localStorage.getItem('paymentEmail');
+    const email = urlParams.get('clientEmail') || urlParams.get('email') || localStorage.getItem('paymentEmail');
     
     if (email) {
       setOrderDetails({ orderReference, email });

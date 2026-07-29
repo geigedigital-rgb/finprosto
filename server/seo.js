@@ -61,6 +61,8 @@ export function buildRobotsTxt(siteUrl) {
 User-agent: *
 Allow: /
 Disallow: /done
+Disallow: /PaymentFailed
+Disallow: /payment-return
 Disallow: /api/
 
 Sitemap: ${siteUrl}/sitemap.xml

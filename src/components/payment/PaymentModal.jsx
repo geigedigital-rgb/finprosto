@@ -8,13 +8,20 @@ import WayForPayScript from './WayForPayScript';
 import { validateEmail, sanitizeInput } from '../utils/validation';
 import { generatePaymentSignature, initWayForPay } from '../utils/wayforpay';
 import { invokeFunction, getSiteUrl } from '@/api/functions';
+import { resolveProduct } from '../data/productCatalog';
 
-const PaymentModal = React.memo(({ isOpen, onClose, product }) => {
+const PaymentModal = React.memo(({ isOpen, onClose, product, initialEmail = '' }) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const modalRef = useRef(null);
   const emailInputRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen && initialEmail) {
+      setEmail(initialEmail);
+    }
+  }, [isOpen, initialEmail]);
 
   useEffect(() => {
     const checkScript = setInterval(() => {
@@ -112,6 +119,28 @@ const PaymentModal = React.memo(({ isOpen, onClose, product }) => {
         productPrice: price
       });
 
+      // Зберігаємо до оплати — потрібно і для success, і для fail сторінки
+      const catalogProduct = resolveProduct({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        oldPrice: product.oldPrice,
+        discount: product.discount,
+        image: product.image,
+      });
+      localStorage.setItem('paymentEmail', sanitizedEmail);
+      localStorage.setItem('pendingOrder', JSON.stringify({
+        orderReference,
+        email: sanitizedEmail,
+        product: catalogProduct.title,
+        price: catalogProduct.price,
+        oldPrice: catalogProduct.oldPrice || '',
+        discount: catalogProduct.discount || '',
+        productId: catalogProduct.id || '',
+        image: catalogProduct.image || '',
+        date: new Date().toISOString()
+      }));
+
       const wayforpayRequest = {
         merchantAccount: merchantAccount,
         merchantDomainName: merchantDomainName,
@@ -127,8 +156,17 @@ const PaymentModal = React.memo(({ isOpen, onClose, product }) => {
         clientEmail: sanitizedEmail,
         language: 'UA',
         straightWidget: false,
-        returnUrl: `${siteUrl}/done`,
+        returnUrl: `${siteUrl}/payment-return`,
         serviceUrl: `${siteUrl}/api/functions/wayforpayCallback`
+      };
+
+      const goToFailedPage = () => {
+        const params = new URLSearchParams({
+          email: sanitizedEmail,
+          product: product.title,
+          orderReference,
+        });
+        window.location.href = `${siteUrl}/PaymentFailed?${params.toString()}`;
       };
 
       // Ініціалізуємо WayForPay віджет
@@ -178,7 +216,6 @@ const PaymentModal = React.memo(({ isOpen, onClose, product }) => {
             // Не блокуємо успішну оплату
           }
 
-          // Зберігаємо дані в localStorage для сторінки Success
           localStorage.setItem('lastOrder', JSON.stringify({
             orderReference,
             email: sanitizedEmail,
@@ -188,14 +225,12 @@ const PaymentModal = React.memo(({ isOpen, onClose, product }) => {
             date: new Date().toISOString()
           }));
 
-          // Редирект
           window.location.href = `${siteUrl}/done`;
         },
-        function (response) {
-          toast.error('Помилка оплати. Спробуйте ще раз');
-          setLoading(false);
+        function () {
+          goToFailedPage();
         },
-        function (response) {
+        function () {
           setLoading(false);
         }
       );

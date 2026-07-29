@@ -84,6 +84,33 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'finprosto' });
 });
 
+// WayForPay returnUrl: same endpoint for success & decline → branch by transactionStatus
+function redirectWayForPayReturn(req, res) {
+  const data = { ...req.query, ...req.body };
+  const status = String(data.transactionStatus || data.status || '').toLowerCase();
+  const email = data.clientEmail || data.email || '';
+  const orderReference = data.orderReference || '';
+  const rawProduct = data.productName;
+  const product = Array.isArray(rawProduct) ? rawProduct[0] : rawProduct || '';
+
+  const params = new URLSearchParams();
+  if (email) params.set('email', email);
+  if (orderReference) params.set('orderReference', orderReference);
+  if (product) params.set('product', product);
+
+  const qs = params.toString();
+  const approved = status === 'approved';
+  const target = approved
+    ? `/done${qs ? `?${qs}` : ''}`
+    : `/PaymentFailed${qs ? `?${qs}` : ''}`;
+
+  return res.redirect(303, target);
+}
+
+app.all('/payment-return', redirectWayForPayReturn);
+// Legacy returnUrl still used by older widgets / bookmarks
+app.post('/done', redirectWayForPayReturn);
+
 // Static frontend
 app.use(express.static(distDir, { index: false }));
 
